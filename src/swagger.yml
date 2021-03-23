@@ -1,0 +1,39 @@
+swagger: "2.0"
+info:
+  description: This is the swagger file that goes with our server code
+  version: "1.0.0"
+  title: Swagger Rest Article
+consumes:
+  - application/json
+produces:
+  - application/json
+
+basePath: /api
+
+paths:
+  /character/{characterId}/story:
+    get:
+      operationId: controllers.api.story_api_controller.get_character_story
+      tags:
+        - Story
+      summary: Read a random story from a character
+      description: Read a random story from a character from the story list
+      parameters:
+        - name: characterId
+          in: path
+          description: CharacterId of the character to get a random story from the list
+          type: string
+          required: True
+      responses:
+        200:
+          description: Successfully read a random story from a character
+          schema:
+            properties:
+              title:
+                type: string
+              description:
+                type: string
+              characters:
+                type: string
+              attribution:
+                type: string
